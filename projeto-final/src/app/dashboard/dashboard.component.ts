@@ -29,14 +29,35 @@ export class DashboardComponent implements OnInit {
    * @return void
    */
   init(): void {
+  }
+
+  atualizargrafico(){
+    let janeiro = document.querySelector("#janeiro") as HTMLInputElement;
+    let fevereiro = document.querySelector("#fevereiro") as HTMLInputElement;
+    let marco = document.querySelector("#marco") as HTMLInputElement;
+    let abril = document.querySelector("#abril") as HTMLInputElement;
+    let maio = document.querySelector("#maio") as HTMLInputElement;
+    let junho = document.querySelector("#junho") as HTMLInputElement;
+    
+    this.dados = [
+      ['Janeiro', Number(janeiro.value)],
+      ['Fevereiro', Number(fevereiro.value)],
+      ['Março', Number(marco.value)],
+      ['Abril', Number(abril.value)],
+      ['Maio', Number(maio.value)],
+      ['Junho', Number(junho.value)],
+    ]
+
     if(typeof(google) !== 'undefined') {
       google.charts.load('current', {'packages':['corechart']});
       setTimeout(() => {
         google.charts.setOnLoadCallback(this.exibirGraficos());
       }, 1000);
     }
-  }
 
+    this.obterOpcoes();
+    this.exibirGraficos();
+  }
    /**
    * Método chamado assim que a API de gráficos é inicializada.
    * Responsável por chamar os métodos geradores dos gráficos.
@@ -123,8 +144,9 @@ export class DashboardComponent implements OnInit {
    */
 
    obterOpcoes(): any{
+    let titulo = document.querySelector("#titulo") as HTMLInputElement;
     return {
-      'title': 'Quantidade de cadastros primeiro semestre',
+      'title': titulo.value,
       'width': 400,
       'height': 300
     }
