@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardRoutes } from './dashboard';
 import { CalculadoraRoutes } from './calculadora';
 import { TarefaRoutes } from './tarefas';
+import { OlamundoRoutes } from './ola-mundo';
 
 export const routes: Routes = [
 	{ 
@@ -14,6 +15,7 @@ export const routes: Routes = [
 	...DashboardRoutes,
 	...CalculadoraRoutes,
 	...TarefaRoutes,
+	...OlamundoRoutes
 ];
 
 @NgModule({
